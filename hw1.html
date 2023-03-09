@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            .circle{
+                width:10px;
+                height:10px;
+                background-color: gold;
+                border-radius: 50%;
+                border: 3px solid white;
+                left: 200px;
+                display: inline-block;
+            }
+            .Mon{
+                margin-top: 300px;
+            }
+            .Tue{
+                margin-top: 200px;
+            }
+            .Wed{
+                margin-top: 250px;
+            }
+            .Thu{
+                margin-top: 230px;
+            }
+            .Fri{
+                margin-top: 170px;
+            }
+            .Sat{
+                margin-top: 210px;
+            }
+            .Sun{
+                margin-top: 150px;
+            }
+            .container{
+                display: flex;
+                justify-content:space-around;
+                position: relative;
+            }
+            .container1{
+                display: flex;
+                justify-content: space-around;
+                position: relative;
+                top: 200px;
+
+            }
+        </style>
+       
+    </head>
+    <body style="background-color:gold;">
+        <h1 style="text-align: center; color: white;font-size:70px;">NUMBER OF VISITORS</h1>
+        <div class="container" id = "line">
+            <div class="circle Mon" id="mon"></div>
+            <div class="circle Tue" id="tue"></div>
+            <div class="circle Wed" id="wed"></div>
+            <div class="circle Thu" id="thu"></div>
+            <div class="circle Fri" id="fri"></div>
+            <div class="circle Sat" id="sat"></div>
+            <div class="circle Sun" id="sun"></div>
+        </div>
+        <div class="container1" style="color: white;">
+            <div>Mon.</div>
+            <div>Tue.</div>
+            <div>Wed.</div>
+            <div>Thu.</div>
+            <div>Fri.</div>
+            <div>Sat.</div>
+            <div>Sun.</div>
+        </div>
+    </body>
+    <script type="text/javascript">
+        function drawline(obj1,obj2){
+            var x1 = obj1.getBoundingClientRect().left + obj1.clientWidth / 2 
+            var y1 = obj1.getBoundingClientRect().top + obj1.clientHeight / 2
+    
+            var x2 = obj2.getBoundingClientRect().left + obj2.clientWidth / 2 
+            var y2 = obj2.getBoundingClientRect().top + obj2.clientHeight / 2 
+    
+            var length = Math.sqrt((x2-x1)*(x2-x1)+(y2-y1)*(y2-y1))
+    
+            var top = (y1+y2)/2 
+            var left = (x1+x2)/2-length/2
+            var rad = Math.atan2((y2-y1),(x2-x1))
+            var line = document.createElement('div')
+            var style = 'position:absolute; background-color:white ; height:5px; top:'+ top + 'px ; left:'
+            +left +'px ; width:'+length+'px; transform: rotate(' + rad +'rad);' 
+            line.setAttribute('style',style)
+            document.body.appendChild(line)
+        }
+        drawline(document.getElementById('mon'),document.getElementById('tue'))
+        drawline(document.getElementById('tue'),document.getElementById('wed'))
+        drawline(document.getElementById('wed'),document.getElementById('thu'))
+        drawline(document.getElementById('thu'),document.getElementById('fri'))
+        drawline(document.getElementById('fri'),document.getElementById('sat'))
+        drawline(document.getElementById('sat'),document.getElementById('sun'))
+    </script>
+</html>
